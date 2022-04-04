@@ -17,4 +17,4 @@ $(call inherit-product, vendor/aosp/config/common.mk)
 
 $(call inherit-product, vendor/aosp/config/telephony.mk)
 
-$(call inherit-product, vendor/aosp/config/aex_props.mk)
+$(call inherit-product, vendor/aosp/config/cyclone_props.mk)

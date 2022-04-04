@@ -30,11 +30,11 @@ import urllib.request
 DEBUG = False
 default_manifest = ".repo/manifest.xml"
 
-custom_local_manifest = ".repo/local_manifests/aex_manifest.xml"
-custom_default_revision = "12.x"
-custom_dependencies = "aosp.dependencies"
-org_manifest = "aex-devices"  # leave empty if org is provided in manifest
-org_display = "AospExtended-Devices"  # needed for displaying
+custom_local_manifest = ".repo/local_manifests/cyclone_manifest.xml"
+custom_default_revision = "1.0"
+custom_dependencies = "cyclone.dependencies"
+org_manifest = "cyclone-devices"  # leave empty if org is provided in manifest
+org_display = "Cyclone-Devices"  # needed for displaying
 
 github_auth = None
 

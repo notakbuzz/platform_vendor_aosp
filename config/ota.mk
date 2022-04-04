@@ -30,7 +30,7 @@ endif
 endif
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.extended.ota.version_code=$(CUSTOM_OTA_VERSION_CODE)
+    ro.cyclone.ota.version_code=$(CUSTOM_OTA_VERSION_CODE)
 
 PRODUCT_PACKAGES += \
     Updates

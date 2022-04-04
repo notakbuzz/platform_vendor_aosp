@@ -13,21 +13,20 @@ EXPORT_TO_SOONG := \
 
 # Setup SOONG_CONFIG_* vars to export the vars listed above.
 # Documentation here:
-# https://github.com/AospExtended/platform_build_soong/commit/8328367c44085b948c003116c0ed74a047237a69
 
-SOONG_CONFIG_NAMESPACES += aospVarsPlugin
+SOONG_CONFIG_NAMESPACES += cycloneVarsPlugin
 
-SOONG_CONFIG_aospVarsPlugin :=
+SOONG_CONFIG_cycloneVarsPlugin :=
 
 define addVar
-  SOONG_CONFIG_aospVarsPlugin += $(1)
-  SOONG_CONFIG_aospVarsPlugin_$(1) := $$(subst ",\",$$($1))
+  SOONG_CONFIG_cycloneVarsPlugin += $(1)
+  SOONG_CONFIG_cycloneVarsPlugin_$(1) := $$(subst ",\",$$($1))
 endef
 
 $(foreach v,$(EXPORT_TO_SOONG),$(eval $(call addVar,$(v))))
 
-SOONG_CONFIG_NAMESPACES += aospGlobalVars
-SOONG_CONFIG_aospGlobalVars += \
+SOONG_CONFIG_NAMESPACES += cycloneGlobalVars
+SOONG_CONFIG_cycloneGlobalVars += \
     additional_gralloc_10_usage_bits \
     bootloader_message_offset \
     camera_needs_client_info \
@@ -45,12 +44,12 @@ SOONG_CONFIG_aospGlobalVars += \
     target_surfaceflinger_udfps_lib \
     uses_camera_parameter_lib
 
-SOONG_CONFIG_NAMESPACES += aospNvidiaVars
-SOONG_CONFIG_aospNvidiaVars += \
+SOONG_CONFIG_NAMESPACES += cycloneNvidiaVars
+SOONG_CONFIG_cycloneNvidiaVars += \
     uses_nv_enhancements
 
-SOONG_CONFIG_NAMESPACES += aospQcomVars
-SOONG_CONFIG_aospQcomVars += \
+SOONG_CONFIG_NAMESPACES += cycloneQcomVars
+SOONG_CONFIG_cycloneQcomVars += \
     legacy_hw_disk_encryption \
     should_wait_for_qsee \
     supports_audio_accessory \
@@ -65,31 +64,31 @@ SOONG_CONFIG_aospQcomVars += \
 
 # Only create display_headers_namespace var if dealing with UM platforms to avoid breaking build for all other platforms
 ifneq ($(filter $(UM_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
-SOONG_CONFIG_aospQcomVars += \
+SOONG_CONFIG_cycloneQcomVars += \
     qcom_display_headers_namespace
 endif
 
 # Soong bool variables
-SOONG_CONFIG_aospGlobalVars_camera_needs_client_info := $(TARGET_CAMERA_NEEDS_CLIENT_INFO)
-SOONG_CONFIG_aospGlobalVars_camera_needs_client_info_lib := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB)
-SOONG_CONFIG_aospGlobalVars_disable_postrender_cleanup := $(TARGET_DISABLE_POSTRENDER_CLEANUP)
-SOONG_CONFIG_aospGlobalVars_has_legacy_camera_hal1 := $(TARGET_HAS_LEGACY_CAMERA_HAL1)
-SOONG_CONFIG_aospGlobalVars_has_memfd_backport := $(TARGET_HAS_MEMFD_BACKPORT)
-SOONG_CONFIG_aospGlobalVars_ignores_ftp_pptp_conntrack_failure := $(TARGET_IGNORES_FTP_PPTP_CONNTRACK_FAILURE)
-SOONG_CONFIG_aospGlobalVars_needs_netd_direct_connect_rule := $(TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE)
-SOONG_CONFIG_aospGlobalVars_target_uses_prebuilt_dynamic_partitions := $(TARGET_USES_PREBUILT_DYNAMIC_PARTITIONS)
-SOONG_CONFIG_aospNvidiaVars_uses_nv_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
-SOONG_CONFIG_aospQcomVars_legacy_hw_disk_encryption := $(TARGET_LEGACY_HW_DISK_ENCRYPTION)
-SOONG_CONFIG_aospQcomVars_should_wait_for_qsee := $(TARGET_KEYMASTER_WAIT_FOR_QSEE)
-SOONG_CONFIG_aospQcomVars_supports_audio_accessory := $(TARGET_QTI_USB_SUPPORTS_AUDIO_ACCESSORY)
-SOONG_CONFIG_aospQcomVars_supports_debug_accessory := $(TARGET_QTI_USB_SUPPORTS_DEBUG_ACCESSORY)
-SOONG_CONFIG_aospQcomVars_supports_extended_compress_format := $(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)
-SOONG_CONFIG_aospQcomVars_supports_hw_fde := $(TARGET_HW_DISK_ENCRYPTION)
-SOONG_CONFIG_aospQcomVars_supports_hw_fde_perf := $(TARGET_HW_DISK_ENCRYPTION_PERF)
-SOONG_CONFIG_aospQcomVars_uses_pre_uplink_features_netmgrd := $(TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD)
-SOONG_CONFIG_aospQcomVars_uses_qcom_bsp_legacy := $(TARGET_USES_QCOM_BSP_LEGACY)
-SOONG_CONFIG_aospQcomVars_uses_qti_camera_device := $(TARGET_USES_QTI_CAMERA_DEVICE)
-SOONG_CONFIG_aospQcomVars_needs_camera_boottime_timestamp := $(TARGET_CAMERA_BOOTTIME_TIMESTAMP)
+SOONG_CONFIG_cycloneGlobalVars_camera_needs_client_info := $(TARGET_CAMERA_NEEDS_CLIENT_INFO)
+SOONG_CONFIG_cycloneGlobalVars_camera_needs_client_info_lib := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB)
+SOONG_CONFIG_cycloneGlobalVars_disable_postrender_cleanup := $(TARGET_DISABLE_POSTRENDER_CLEANUP)
+SOONG_CONFIG_cycloneGlobalVars_has_legacy_camera_hal1 := $(TARGET_HAS_LEGACY_CAMERA_HAL1)
+SOONG_CONFIG_cycloneGlobalVars_has_memfd_backport := $(TARGET_HAS_MEMFD_BACKPORT)
+SOONG_CONFIG_cycloneGlobalVars_ignores_ftp_pptp_conntrack_failure := $(TARGET_IGNORES_FTP_PPTP_CONNTRACK_FAILURE)
+SOONG_CONFIG_cycloneGlobalVars_needs_netd_direct_connect_rule := $(TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE)
+SOONG_CONFIG_cycloneGlobalVars_target_uses_prebuilt_dynamic_partitions := $(TARGET_USES_PREBUILT_DYNAMIC_PARTITIONS)
+SOONG_CONFIG_cycloneNvidiaVars_uses_nv_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
+SOONG_CONFIG_cycloneQcomVars_legacy_hw_disk_encryption := $(TARGET_LEGACY_HW_DISK_ENCRYPTION)
+SOONG_CONFIG_cycloneQcomVars_should_wait_for_qsee := $(TARGET_KEYMASTER_WAIT_FOR_QSEE)
+SOONG_CONFIG_cycloneQcomVars_supports_audio_accessory := $(TARGET_QTI_USB_SUPPORTS_AUDIO_ACCESSORY)
+SOONG_CONFIG_cycloneQcomVars_supports_debug_accessory := $(TARGET_QTI_USB_SUPPORTS_DEBUG_ACCESSORY)
+SOONG_CONFIG_cycloneQcomVars_supports_extended_compress_format := $(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)
+SOONG_CONFIG_cycloneQcomVars_supports_hw_fde := $(TARGET_HW_DISK_ENCRYPTION)
+SOONG_CONFIG_cycloneQcomVars_supports_hw_fde_perf := $(TARGET_HW_DISK_ENCRYPTION_PERF)
+SOONG_CONFIG_cycloneQcomVars_uses_pre_uplink_features_netmgrd := $(TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD)
+SOONG_CONFIG_cycloneQcomVars_uses_qcom_bsp_legacy := $(TARGET_USES_QCOM_BSP_LEGACY)
+SOONG_CONFIG_cycloneQcomVars_uses_qti_camera_device := $(TARGET_USES_QTI_CAMERA_DEVICE)
+SOONG_CONFIG_cycloneQcomVars_needs_camera_boottime_timestamp := $(TARGET_CAMERA_BOOTTIME_TIMESTAMP)
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
@@ -100,18 +99,18 @@ TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY ?= libcamera_parameters
 TARGET_SURFACEFLINGER_UDFPS_LIB ?= surfaceflinger_udfps_lib
 
 # Soong value variables
-SOONG_CONFIG_aospGlobalVars_additional_gralloc_10_usage_bits := $(TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS)
-SOONG_CONFIG_aospGlobalVars_bootloader_message_offset := $(BOOTLOADER_MESSAGE_OFFSET)
-SOONG_CONFIG_aospGlobalVars_target_init_vendor_lib := $(TARGET_INIT_VENDOR_LIB)
-SOONG_CONFIG_aospGlobalVars_target_ld_shim_libs := $(subst $(space),:,$(TARGET_LD_SHIM_LIBS))
-SOONG_CONFIG_aospGlobalVars_target_process_sdk_version_override := $(TARGET_PROCESS_SDK_VERSION_OVERRIDE)
-SOONG_CONFIG_aospGlobalVars_target_surfaceflinger_udfps_lib := $(TARGET_SURFACEFLINGER_UDFPS_LIB)
-SOONG_CONFIG_aospGlobalVars_uses_camera_parameter_lib := $(TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY)
-SOONG_CONFIG_aospGlobalVars_target_inputdispatcher_skip_event_key := $(TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY)
+SOONG_CONFIG_cycloneGlobalVars_additional_gralloc_10_usage_bits := $(TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS)
+SOONG_CONFIG_cycloneGlobalVars_bootloader_message_offset := $(BOOTLOADER_MESSAGE_OFFSET)
+SOONG_CONFIG_cycloneGlobalVars_target_init_vendor_lib := $(TARGET_INIT_VENDOR_LIB)
+SOONG_CONFIG_cycloneGlobalVars_target_ld_shim_libs := $(subst $(space),:,$(TARGET_LD_SHIM_LIBS))
+SOONG_CONFIG_cycloneGlobalVars_target_process_sdk_version_override := $(TARGET_PROCESS_SDK_VERSION_OVERRIDE)
+SOONG_CONFIG_cycloneGlobalVars_target_surfaceflinger_udfps_lib := $(TARGET_SURFACEFLINGER_UDFPS_LIB)
+SOONG_CONFIG_cycloneGlobalVars_uses_camera_parameter_lib := $(TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY)
+SOONG_CONFIG_cycloneGlobalVars_target_inputdispatcher_skip_event_key := $(TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY)
 ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
-SOONG_CONFIG_aospQcomVars_qcom_display_headers_namespace := vendor/qcom/opensource/commonsys-intf/display
+SOONG_CONFIG_cycloneQcomVars_qcom_display_headers_namespace := vendor/qcom/opensource/commonsys-intf/display
 else
-SOONG_CONFIG_aospQcomVars_qcom_display_headers_namespace := $(QCOM_SOONG_NAMESPACE)/display
+SOONG_CONFIG_cycloneQcomVars_qcom_display_headers_namespace := $(QCOM_SOONG_NAMESPACE)/display
 
 endif
 

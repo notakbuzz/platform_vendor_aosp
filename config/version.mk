@@ -12,18 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#Extended Versioning
-EXTENDED_VERSION = v9.0
-EXTENDED_BUILD_TYPE ?= UNOFFICIAL
+#Versioning
+VERSION = v1.0
+BUILD_TYPE ?= UNOFFICIAL
 
-ifeq ($(EXTENDED_BUILD_TYPE), OFFICIAL)
+ifeq ($(BUILD_TYPE), OFFICIAL)
 
-# AEXOTA
+# OTA
 $(call inherit-product-if-exists, vendor/aosp/config/ota.mk)
 
 endif
 
-# AOSP recovery flashing
+# recovery flashing
 ifeq ($(TARGET_USES_AOSP_RECOVERY), true)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.sys.recovery_update=true

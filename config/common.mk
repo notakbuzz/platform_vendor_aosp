@@ -77,7 +77,6 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     librs_jni \
     Stk \
-    AEXPapers \
     DuckDuckGo \
     MusicPlayerGO \
     Recorder \
@@ -202,7 +201,6 @@ SELINUX_IGNORE_NEVERALLOWS ?= false
 include packages/overlays/Themes/themes.mk
 
 PRODUCT_PACKAGES += \
-    AEXWallpaperStub \
     ThemePicker
 
 # Recommend using the non debug dexpreopter
