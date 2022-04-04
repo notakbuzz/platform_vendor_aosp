@@ -77,9 +77,7 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     librs_jni \
     Stk \
-    AEXPapers \
     DuckDuckGo \
-    MusicPlayerGO \
     Recorder \
     ExactCalculator \
     Etar \

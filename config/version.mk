@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#Extended Versioning
-EXTENDED_VERSION = v9.0
-EXTENDED_BUILD_TYPE ?= UNOFFICIAL
+#Cyclone Versioning
+CYCLONE_VERSION = v1.0
+CYCLONE_BUILD_TYPE ?= Experimental
 
-ifeq ($(EXTENDED_BUILD_TYPE), OFFICIAL)
+ifeq ($(CYCLONE_BUILD_TYPE), RELEASE)
 
 # AEXOTA
 $(call inherit-product-if-exists, vendor/aosp/config/ota.mk)
