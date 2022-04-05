@@ -77,10 +77,7 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     librs_jni \
     Stk \
-    DuckDuckGo \
     Recorder \
-    ExactCalculator \
-    Etar \
     DevicePersonalizationPrebuiltPixel2021
 
 # SystemUI plugins
@@ -93,11 +90,6 @@ PRODUCT_PACKAGES += \
     SimpleDeviceConfig
 endif
 
-# Cutout control overlays
-#PRODUCT_PACKAGES += \
-#    HideCutout \
-#    StatusBarStock
-
 # Dex preopt
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
@@ -105,10 +97,6 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 # Extra packages
 PRODUCT_PACKAGES += \
     libjni_latinimegoogle
-
-# Immersive Navigation
-#PRODUCT_PACKAGES += \
-#    ImmersiveNavigationOverlay
 
 ifneq ($(WITH_GAPPS),true)
 # Pixel sysconfig
@@ -149,10 +137,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Exchange2
 
-# SoftAPManager
-#PRODUCT_PACKAGES += \
-#    SoftAPManager
-
 # init.d support
 PRODUCT_COPY_FILES += \
     vendor/aosp/prebuilt/common/etc/init.d/00banner:$(TARGET_COPY_OUT_SYSTEM)/etc/init.d/00banner
@@ -183,21 +167,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
-# Pixel charger images
-#ifeq ($(USE_PIXEL_CHARGER_IMAGES),true)
-#PRODUCT_PACKAGES += \
-#    product_charger_res_images
-#endif
-
 # Selinux
 SELINUX_IGNORE_NEVERALLOWS ?= false
 
 # StichImage
 #PRODUCT_PACKAGES += \
 #    StitchImage
-
-# ThemeOverlays
-include packages/overlays/Themes/themes.mk
 
 PRODUCT_PACKAGES += \
     AEXWallpaperStub \
